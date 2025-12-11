@@ -1,0 +1,25 @@
+@using RazorConsole.Components
+@using Spectre.Console
+
+<Columns>
+    <TextButton Content="@(IsCompleted ? "[x]" : "[ ]")" OnClick="OnCheckboxClicked" FocusedColor="Color.Yellow" />
+    <Markup Content="@Text" Foreground="@(IsCompleted? Color.Grey: Color.White)"
+        Decoration="@(IsCompleted ?  Decoration.Strikethrough : Decoration.None)" />
+</Columns>
+
+@code {
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+
+    [Parameter]
+    public bool IsCompleted { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> IsCompletedChanged { get; set; }
+
+    private async Task OnCheckboxClicked()
+    {
+        IsCompleted = !IsCompleted;
+        await IsCompletedChanged.InvokeAsync(IsCompleted);
+    }
+}

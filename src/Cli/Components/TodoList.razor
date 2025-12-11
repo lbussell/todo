@@ -1,0 +1,14 @@
+@using RazorConsole.Components
+@using Spectre.Console
+
+<Rows>
+    <TodoItem Text="Learn RazorConsole" @bind-IsCompleted="_task1Done" />
+    <TodoItem Text="Build a todo app" @bind-IsCompleted="_task2Done" />
+    <TodoItem Text="Ship to production" @bind-IsCompleted="_task3Done" />
+</Rows>
+
+@code {
+    private bool _task1Done = false;
+    private bool _task2Done = true;
+    private bool _task3Done = false;
+}

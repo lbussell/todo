@@ -5,7 +5,7 @@ using Todo.Cli.Components;
 
 var builder = Host.CreateDefaultBuilder(args);
 
-builder.UseRazorConsole<Counter>();
+builder.UseRazorConsole<TodoList>();
 
 var host = builder.Build();
 await host.RunAsync();
